@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/cannabis-app/static/css/main.e78dc6f6.chunk.css",
-    "main.js": "/cannabis-app/static/js/main.7d4d1373.chunk.js",
-    "main.js.map": "/cannabis-app/static/js/main.7d4d1373.chunk.js.map",
+    "main.js": "/cannabis-app/static/js/main.ff24a4ce.chunk.js",
+    "main.js.map": "/cannabis-app/static/js/main.ff24a4ce.chunk.js.map",
     "runtime-main.js": "/cannabis-app/static/js/runtime-main.85d3dfeb.js",
     "runtime-main.js.map": "/cannabis-app/static/js/runtime-main.85d3dfeb.js.map",
     "static/js/2.aef34e0d.chunk.js": "/cannabis-app/static/js/2.aef34e0d.chunk.js",
     "static/js/2.aef34e0d.chunk.js.map": "/cannabis-app/static/js/2.aef34e0d.chunk.js.map",
     "index.html": "/cannabis-app/index.html",
-    "precache-manifest.0815fc27a575a75567afe3ec907e946b.js": "/cannabis-app/precache-manifest.0815fc27a575a75567afe3ec907e946b.js",
+    "precache-manifest.b1c7659696fa9230583efbe79ce7a359.js": "/cannabis-app/precache-manifest.b1c7659696fa9230583efbe79ce7a359.js",
     "service-worker.js": "/cannabis-app/service-worker.js",
     "static/css/main.e78dc6f6.chunk.css.map": "/cannabis-app/static/css/main.e78dc6f6.chunk.css.map",
     "static/js/2.aef34e0d.chunk.js.LICENSE.txt": "/cannabis-app/static/js/2.aef34e0d.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.85d3dfeb.js",
     "static/js/2.aef34e0d.chunk.js",
     "static/css/main.e78dc6f6.chunk.css",
-    "static/js/main.7d4d1373.chunk.js"
+    "static/js/main.ff24a4ce.chunk.js"
   ]
 }
