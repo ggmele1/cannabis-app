@@ -55,7 +55,7 @@ const App = () => {
     try {
       await axios
         .get(
-          `http://strainapi.evanbusse.com/${API_KEY}/strains/search/name/${strain}`
+          `https://strainapi.evanbusse.com/${API_KEY}/strains/search/name/${strain}`
         )
         .then(function (response) {
           response.data.map((matches) => {
@@ -78,7 +78,7 @@ const App = () => {
     try {
       await axios
         .get(
-          `http://strainapi.evanbusse.com/${API_KEY}/strains/data/effects/${strain}`
+          `https://strainapi.evanbusse.com/${API_KEY}/strains/data/effects/${strain}`
         )
         .then(function (response) {
           const { medical, positive, negative } = response.data;
@@ -115,7 +115,7 @@ const App = () => {
   //         .then(function (response) {
   //             let info = response.data;
   //             let names = Object.keys(info)
-  //             Firebase.database().ref("/").set([{name: names}])
+  //             // Firebase.database().ref("/").set([{name: names}])
   //         })
   //     } catch (error) {
   //         console.log(error)

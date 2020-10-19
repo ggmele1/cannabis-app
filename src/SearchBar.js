@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchBar = (props) => {
-  const [value, setValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const preventDefault = (event) => event.preventDefault();
 
@@ -63,7 +62,6 @@ const SearchBar = (props) => {
         renderInput={(params) => (
         <TextField {...params} label="Search Strain" variant="filled" className={classes.textInput}/>
         )}
-        onChange={(event, newValue) => setValue(newValue)}
         onInputChange={(event, newInputValue) => setInputValue(newInputValue)}
       />
       <button className="btn-fill btn-bottom" onClick={() => handleSubmit()}>Search</button>

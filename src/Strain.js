@@ -48,7 +48,6 @@ const Strain = (props) => {
   }
 
   const imageFail = () => {
-    console.log("error");
     setImageCount(imageCount + 1);
     setImgType("jpg");
   };
