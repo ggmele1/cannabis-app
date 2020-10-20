@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "../App.css";
 import { Container, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -36,7 +36,11 @@ const Landing = (props) => {
             Cannabis is a drug and should be consumed legally and responsibly.
           </Typography>
           <div className="button-wrapper">
-            <button type="submit" className="btn-fill btn-bottom" onClick={() => props.setIsAdult(true)}>
+            <button
+              type="submit"
+              className="btn-fill btn-bottom"
+              onClick={() => props.setIsAdult(true)}
+            >
               Yes I am
             </button>
             <button type="submit" className="btn-fill btn-bottom">
