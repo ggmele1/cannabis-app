@@ -2,7 +2,7 @@
   "name": "cannabis-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ggmele1.github.io/cannabis-app",
+  "homepage": "https://ggmele1.github.io/cannabis-app",
   "dependencies": {
     "-": "0.0.1",
     "@material-ui/core": "^4.11.0",
