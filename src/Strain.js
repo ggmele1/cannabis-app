@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import SimilarStrains from './SimilarStrains';
 import {
   Typography,
   Container,
@@ -32,50 +33,80 @@ const useStyles = makeStyles((theme) => ({
 const Strain = (props) => {
   const {
     name,
-    race,
     description,
     medical,
     positive,
     negative,
     imageName,
+    setIsPng,
+    setIsJpg,
+    setIsDefault,
+    isPng,
+    isJpg,
+    isDefault    
   } = props;
-  const [imgType, setImgType] = useState("png");
-  const [imageCount, setImageCount] = useState(1);
+
+
 
   const returnToSearch = () => {
     props.setIsSuccess(false);
     props.setStrainName("");
   }
 
-  const imageFail = () => {
-    setImageCount(imageCount + 1);
-    setImgType("jpg");
+  const imageFailPng = () => {
+    setIsPng(!isPng);
+    setIsJpg(!isJpg);
   };
+
+  const imageFailJpg = () => {
+    setIsJpg(!isJpg);
+    setIsDefault(!isDefault);
+  }
+
   const classes = useStyles();
   return (
     <Container size="md">
       <div className="strain-component">
-        {imageName && imageCount < 3 ? (
+
+
+
+        {imageName && isPng ? (
           <div className="image-wrapper">
             <img
               className="strain-image"
-              src={`https://images.leafly.com/flower-images/${imageName}.${imgType}`}
-              onError={imageFail}
+              src={`https://images.leafly.com/flower-images/${imageName}.png`}
+              onError={imageFailPng}
               alt="Strain"
             />
           </div>
         ) : null}
-        {imageName && imageCount === 3 ? (
+
+
+        {imageName && isJpg ? (
+          <div className="image-wrapper">
+            <img
+              className="strain-image"
+              src={`https://images.leafly.com/flower-images/${imageName}.jpg`}
+              onError={imageFailJpg}
+              alt="Strain"
+            />
+          </div>
+        ) : null}
+
+
+        {imageName && isDefault ? (
           <div className="image-wrapper">
             <img src={image} alt="default" className="strain-image" />
           </div>
         ) : null}
+        <div className="strain-header-wrapper">
         <Typography variant="h3" className="header decorate">
           {name}
         </Typography>
         <Typography variant="h5" className="sub-header decorate">
-          {race}
+          {props.strainRace}
         </Typography>
+        </div>
         <Typography variant="h6" className="secondary">
           description
         </Typography>
@@ -136,63 +167,14 @@ const Strain = (props) => {
         <Typography variant="h4" className="header primary">
           Similar Strains
         </Typography>
-        <div className="other-strains-wrapper">
-          <div className="other-strains">
-            <img
-              src="https://images.leafly.com/flower-images/gelato.jpg"
-              alt="default"
-              className="other-strain-image"
-            />
-            <Divider className="colored-divider" />
-            <div className="other-strain-typography">
-              <Typography variant="body" className="header-mini primary">
-                Jack Herer
-              </Typography>
-              <Typography variant="body2" className="header-mini primary">
-                Sativa
-              </Typography>
-            </div>
-          </div>
-          
 
-          <div className="other-strains">
-            <img
-              src="https://images.leafly.com/flower-images/gelato.jpg"
-              alt="default"
-              className="other-strain-image"
-            />
-            <Divider className="colored-divider" />
-            <div className="other-strain-typography">
-              <Typography variant="body" className="header-mini primary">
-                Jack Herer
-              </Typography>
-              <Typography variant="body2" className="header-mini primary">
-                Sativa
-              </Typography>
-            </div>
-          </div>
-
-          <div className="other-strains">
-            <img
-              src="https://images.leafly.com/flower-images/gelato.jpg"
-              alt="default"
-              className="other-strain-image"
-            />
-            <Divider className="colored-divider" />
-            <div className="other-strain-typography">
-              <Typography variant="body" className="header-mini primary">
-                Jack Herer
-              </Typography>
-              <Typography variant="body2" className="header-mini primary">
-                Sativa
-              </Typography>
-            </div>
-          </div>
-        </div>
-
-        <button type="submit" className="btn-fill btn-bottom" onClick={() => returnToSearch()}>
+        <SimilarStrains race={props.strainRace} getStrainByName={props.getStrainByName} similarStrainsList={props.similarStrainsList}/>
+       
+        <div className="back-button-wrapper">
+        <button type="submit" className="btn-fill btn-bottom long" onClick={() => returnToSearch()}>
               Back To Search
-            </button>
+        </button>
+        </div>
 
       </div>
     </Container>

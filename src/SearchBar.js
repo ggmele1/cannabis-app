@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { TextField, Typography, Container, Link } from "@material-ui/core";
+import { TextField, Typography, Container } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
+import StrainMini from './StrainMini.js';
 import './App.css';
 
 
@@ -34,15 +35,12 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchBar = (props) => {
   const [inputValue, setInputValue] = useState("");
-  const preventDefault = (event) => event.preventDefault();
 
   const handleSubmit = () => {
     props.getStrainByName(inputValue);
   };
 
-  const handleLink = (event) => {
-    props.getStrainByName(event);
-  }
+
   const classes = useStyles();
   return (
     <div className="search">
@@ -65,15 +63,12 @@ const SearchBar = (props) => {
         onInputChange={(event, newInputValue) => setInputValue(newInputValue)}
       />
       <button className="btn-fill btn-bottom" onClick={() => handleSubmit()}>Search</button>
-      <div className="suggestions">
           <Typography variant="h6" className="secondary">
             Popular Searches
           </Typography>
-          <div className="suggestion-links">
-              <Link className="link">Gelato</Link>
-              <Link className="link">Jack Herer</Link>
-              <Link className="link">OG Kush</Link>
-          </div>
+      <div className="suggestions">
+
+          <StrainMini getStrainByName={props.getStrainByName}/>
       </div>
       </Container>
     </div>
