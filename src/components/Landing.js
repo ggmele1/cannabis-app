@@ -38,7 +38,7 @@ const Landing = () => {
           </Typography>
           <div className="button-wrapper">
             <div className="button-margin">
-              <Link to="search">
+              <Link to="/search">
                 <button
                   type="submit"
                   className="btn-fill btn-bottom"

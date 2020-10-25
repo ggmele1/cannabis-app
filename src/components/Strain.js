@@ -28,10 +28,12 @@ const Strain = (props) => {
     isDefault,
     strainRace,
     isSuccess,
+    setIsSuccess
   } = props;
 
   const returnToSearch = () => {
     props.setStrainName("");
+    setIsSuccess(false)
   };
 
   const imageFailPng = () => {
