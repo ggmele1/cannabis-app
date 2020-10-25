@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "19cdcd8c2666a1b8686178843e4fb148",
+    "revision": "a21224bf8f319f563b2366028a3d090c",
     "url": "/cannabis-app/index.html"
   },
   {
-    "revision": "3a006dca2ea747d063eb",
+    "revision": "6fbb3e0ec5e2298809a7",
     "url": "/cannabis-app/static/css/main.e92a4ad4.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cannabis-app/static/js/2.8f2df425.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3a006dca2ea747d063eb",
-    "url": "/cannabis-app/static/js/main.768c6e27.chunk.js"
+    "revision": "6fbb3e0ec5e2298809a7",
+    "url": "/cannabis-app/static/js/main.3fef46d7.chunk.js"
   },
   {
     "revision": "76e1d428254732a1ff48",
