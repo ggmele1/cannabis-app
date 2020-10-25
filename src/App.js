@@ -160,7 +160,7 @@ const App = () => {
             />
           </Route>
 
-          <Route path="/cannabis-app/strain">
+          <Route path="/strain">
             <Strain
               name={strainName}
               strainRace={strainRace}
@@ -186,7 +186,7 @@ const App = () => {
             />
           </Route>
 
-          <Route path="/cannabis-app/browse">
+          <Route path="/browse">
             <AllStrains
               allStrains={allStrains}
               setAllStrains={setAllStrains}
