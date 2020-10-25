@@ -1,19 +1,25 @@
 import React from "react";
 import logo from "./images/DopestData.png";
 import "../App.css";
+import {Link} from "react-router-dom";
+
 const Nav = (props) => {
-  const { setIsSuccess, setStrainName } = props;
+  const { setIsSuccess, setStrainName, setBrowseAll, setNoStrainError } = props;
   const returnToSearch = () => {
     setIsSuccess(false);
     setStrainName("");
+    setBrowseAll(false);
+    setNoStrainError(false);
   };
 
   return (
+    <Link to="/search">
     <button className="link" onClick={() => returnToSearch()}>
       <div className="nav">
         <img src={logo} alt="logo" className="logo" />
       </div>
     </button>
+    </Link>
   );
 };
 

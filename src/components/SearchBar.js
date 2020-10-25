@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import StrainMini from "./StrainMini.js";
 import "../App.css";
 
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   marginAutoContainer: {
     marginTop: 25,
@@ -17,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Lato",
     fontWeight: "900",
     marginTop: 25,
-    marginBottom: 10,
+    marginBottom: 6,
     background: "#31ab65",
     color: "#141414",
     border: "2px solid",
@@ -26,15 +28,16 @@ const useStyles = makeStyles((theme) => ({
   textInput: {
     fontFamily: "Lato",
     fontWeight: "900",
-  }
+  },
 }));
 
 const SearchBar = (props) => {
   const [inputValue, setInputValue] = useState("");
-  const { getStrainByName, data } = props;
+  const { getStrainByName, allStrains } = props;
 
   const handleSubmit = () => {
     getStrainByName(inputValue);
+    setInputValue("");
   };
 
   const classes = useStyles();
@@ -44,34 +47,49 @@ const SearchBar = (props) => {
         <Typography variant="h3" className="primary header">
           Search a cannabis strain.
         </Typography>
-        <Autocomplete
-          disableClearable
-          className={classes.input}
-          loadingText="Loading"
-          freeSolo
-          id="combo-box-demo"
-          options={data}
-          getOptionLabel={(option) => option.name}
-          style={{ width: 340 }}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Search Strain"
-              variant="filled"
-              className={classes.textInput}
-            />
-          )}
-          onInputChange={(event, newInputValue) => setInputValue(newInputValue)}
-        />
-        <button className="btn-fill btn-bottom" onClick={() => handleSubmit()}>
-          Search
-        </button>
+        <div className="input">
+          <Autocomplete
+            disableClearable
+            className={classes.input}
+            loadingText="Loading"
+            freeSolo
+            id="combo-box-demo"
+            options={allStrains}
+            getOptionLabel={(option) => option.name}
+            style={{ width: 340 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Search Strain"
+                variant="filled"
+                className={classes.textInput}
+              />
+            )}
+            onInputChange={(event, newInputValue) =>
+              setInputValue(newInputValue)
+            }
+          />
+
+          <Link to="/strain">
+            <button
+              className="btn-fill btn-bottom"
+              onClick={() => handleSubmit()}
+            >
+              Search
+            </button>
+          </Link>
+        </div>
         <Typography variant="h6" className="secondary">
           Popular Searches
         </Typography>
         <div className="suggestions">
           <StrainMini getStrainByName={getStrainByName} />
         </div>
+        <Link to="/browse" className="center-row">
+          <button className="btn-fill btn-bottom full">
+            Browse All Strains
+          </button>
+        </Link>
       </Container>
     </div>
   );

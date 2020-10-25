@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import { Container, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   marginAutoContainer: {
@@ -11,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Landing = (props) => {
+const Landing = () => {
   const classes = useStyles();
   return (
     <div className="landing">
@@ -29,23 +30,29 @@ const Landing = (props) => {
           </Typography>
         </div>
         <div className="disclaimer">
-          <Typography variant="h6" className="primary header span">
-            Are you over 21?
-          </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" className="body-small">
             Cannabis is a drug and should be consumed legally and responsibly.
           </Typography>
+          <Typography variant="h6" className="primary header-small span">
+            Are you over 21?
+          </Typography>
           <div className="button-wrapper">
-            <button
-              type="submit"
-              className="btn-fill btn-bottom"
-              onClick={() => props.setIsAdult(true)}
-            >
-              Yes I am
-            </button>
-            <button type="submit" className="btn-fill btn-bottom">
-              No I am Not
-            </button>
+            <div className="button-margin">
+              <Link to="search">
+                <button
+                  type="submit"
+                  className="btn-fill btn-bottom"
+                  // onClick={() => props.setIsAdult(true)}
+                >
+                  Yes I Am
+                </button>
+              </Link>
+            </div>
+            <div className="button-margin">
+              <button type="submit" className="btn-fill btn-bottom">
+                No I Am Not
+              </button>
+            </div>
           </div>
         </div>
       </Container>

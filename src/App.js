@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Firebase from "firebase";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { SearchBar, Nav, Strain, Landing } from "./components/index";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  SearchBar,
+  Nav,
+  Strain,
+  Landing,
+  AllStrains,
+} from "./components/index";
 import { FIREBASE_API, STRAIN_API } from "./config/index";
-
 const theme = createMuiTheme({
   typography: {
     fontFamily: ["Lato", "sans-serif"].join(","),
@@ -20,31 +26,40 @@ const App = () => {
   const [negative, setNegative] = useState("");
   const [strainImageName, setStrainImageName] = useState(false);
   const [strainName, setStrainName] = useState("");
-  const [filteredSearchData, setFilteredSearchData] = useState();
-  const [isAdult, setIsAdult] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [imageCount, setImageCount] = useState(1);
   const [similarStrainsList, setSimilarStrainsList] = useState("");
   const [isPng, setIsPng] = useState(true);
   const [isJpg, setIsJpg] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
+  const [allStrains, setAllStrains] = useState([]);
+  const [noStrainError, setNoStrainError] = useState(false);
 
   if (Firebase.apps.length === 0) {
     Firebase.initializeApp(FIREBASE_API);
   }
 
-  // fetches name data for auto-complete form
   useEffect(() => {
+    getAllStrainsData();
+  }, []);
+
+  const getAllStrainsData = () => {
     const ref = Firebase.database().ref("/");
     ref.on("value", (snapshot) => {
-      const DB_NAMES = [];
-      const getNameData = snapshot.val();
-      getNameData.forEach((strain) => {
-        DB_NAMES.push({ name: strain });
-      });
-      setFilteredSearchData(DB_NAMES);
+      const getData = snapshot.val();
+      setAllStrains(
+        getData.sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        })
+      );
     });
-  }, []);
+  };
 
   const getStrainByName = async (strain) => {
     try {
@@ -53,24 +68,27 @@ const App = () => {
           `https://strainapi.evanbusse.com/${STRAIN_API}/strains/search/name/${strain}`
         )
         .then(function (response) {
-          response.data.forEach((matches) => {
-            if (strain.toLowerCase() === matches.name.toLowerCase()) {
-              setStrainName(matches.name);
-              setStrainRace(matches.race);
-              setStrainDesc(matches.desc);
-              getStrainDetails(matches.id);
-              getSimilarStrains(matches.race);
-            }
-          });
-          setIsPng(true);
-          setIsJpg(false);
-          setIsDefault(false);
-          getStrainImageName(strain);
-          setIsSuccess(true);
+          if (response.data.length < 1) {
+            setNoStrainError(!noStrainError);
+          } else {
+            response.data.forEach((matches) => {
+              if (strain.toLowerCase() === matches.name.toLowerCase()) {
+                setStrainName(matches.name);
+                setStrainRace(matches.race);
+                setStrainDesc(matches.desc);
+                getStrainDetails(matches.id);
+                getSimilarStrains(matches.race);
+              }
+            });
+            setNoStrainError(false);
+            setIsPng(true);
+            setIsJpg(false);
+            setIsDefault(false);
+            getStrainImageName(strain);
+            setIsSuccess(true);
+          }
         });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const getStrainDetails = async (strain) => {
@@ -107,80 +125,81 @@ const App = () => {
     setStrainImageName(name);
   };
 
-  const getSimilarStrains = async (race) => {
-    try {
-      await axios
-        .get(
-          `https://strainapi.evanbusse.com/${STRAIN_API}/strains/search/race/${race}`
-        )
-        .then(function (response) {
-          const similarStrainsArray = [];
-          for (var i = 0; i < 6; i++) {
-            similarStrainsArray.push(
-              response.data[
-                Math.floor(Math.random() * response.data.length - 1 + 1)
-              ]
-            );
-          }
-          setSimilarStrainsList(similarStrainsArray);
-        });
-    } catch (error) {
-      console.log(error);
+  const getSimilarStrains = (race) => {
+    const similarStrain = allStrains.filter((item) => {
+      return item.race === race;
+    });
+    const similarStrainsArray = [];
+    for (var i = 0; i < 6; i++) {
+      similarStrainsArray.push(
+        similarStrain[Math.floor(Math.random() * similarStrain.length - 1 + 1)]
+      );
     }
+    setSimilarStrainsList(similarStrainsArray);
   };
 
-  // const getAllStrains = () => {
-  //     try {
-  //         axios.get('https://strainapi.evanbusse.com/EwZa0Jz/strains/search/all')
-  //         .then(function (response) {
-  //             let info = response.data;
-  //             let names = Object.keys(info)
-  //             // Firebase.database().ref("/").set([{name: names}])
-  //         })
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }
-
   return (
-    <ThemeProvider theme={theme}>
-      <Nav setIsSuccess={setIsSuccess} setStrainName={setStrainName} />
-      <div>
-        {!isAdult ? <Landing setIsAdult={setIsAdult} /> : null}
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Nav
+          setIsSuccess={setIsSuccess}
+          setStrainName={setStrainName}
+          setNoStrainError={setNoStrainError}
+        />
 
-        {isAdult && !isSuccess ? (
-          <SearchBar
-            data={filteredSearchData}
-            getStrainByName={getStrainByName}
-          />
-        ) : null}
+        <Switch>
+          <Route exact path="/">
+            <Landing />
+          </Route>
 
-        {!strainName ? null : (
-          <Strain
-            name={strainName}
-            strainRace={strainRace}
-            description={strainDesc}
-            medical={medical}
-            positive={positive}
-            negative={negative}
-            imageName={strainImageName}
-            setIsSuccess={setIsSuccess}
-            setStrainName={setStrainName}
-            getStrainByName={getStrainByName}
-            imageCount={imageCount}
-            setImageCount={setImageCount}
-            setIsPng={setIsPng}
-            setIsJpg={setIsJpg}
-            setIsDefault={setIsDefault}
-            isPng={isPng}
-            isJpg={isJpg}
-            isDefault={isDefault}
-            filteredSearchData={filteredSearchData}
-            similarStrainsList={similarStrainsList}
-          />
-        )}
-      </div>
-    </ThemeProvider>
+          <Route path="/search">
+            <SearchBar
+              getStrainByName={getStrainByName}
+              allStrains={allStrains}
+              noStrainError={noStrainError}
+            />
+          </Route>
+
+          <Route path="/strain">
+            <Strain
+              name={strainName}
+              strainRace={strainRace}
+              description={strainDesc}
+              medical={medical}
+              positive={positive}
+              negative={negative}
+              imageName={strainImageName}
+              setIsSuccess={setIsSuccess}
+              isSuccess={isSuccess}
+              setStrainName={setStrainName}
+              getStrainByName={getStrainByName}
+              imageCount={imageCount}
+              setImageCount={setImageCount}
+              setIsPng={setIsPng}
+              setIsJpg={setIsJpg}
+              setIsDefault={setIsDefault}
+              isPng={isPng}
+              isJpg={isJpg}
+              isDefault={isDefault}
+              similarStrainsList={similarStrainsList}
+              allStrains={allStrains}
+            />
+          </Route>
+
+          <Route path="/browse">
+            <AllStrains
+              allStrains={allStrains}
+              setAllStrains={setAllStrains}
+              getAllStrainsData={getAllStrainsData}
+              getStrainByName={getStrainByName}
+              setStrainName={setStrainName}
+              setNoStrainError={setNoStrainError}
+              setIsSuccess={setIsSuccess}
+            />
+          </Route>
+        </Switch>
+      </ThemeProvider>
+    </Router>
   );
 };
 export default App;

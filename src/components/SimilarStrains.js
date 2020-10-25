@@ -1,25 +1,27 @@
 import React from "react";
 import "../App.css";
 import imageSources from "./imageSources";
-import { Typography, Divider } from "@material-ui/core";
+import { Typography, Divider, Container } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const SimilarStrains = (props) => {
   const { similarStrainsList, getStrainByName } = props;
-
+  
   const handleLink = (item) => {
     getStrainByName(item);
   };
 
   return (
-    <div>
+    <Container>      
       <Typography variant="h4" className="header primary">
         Similar Strains
       </Typography>
       {similarStrainsList.length !== 6 ? (
         <div>Loading</div>
       ) : (
-        <div>
+        <div className="center-row">
           {similarStrainsList.map((item, key) => (
+            <Link to="/strain">
             <button
               key={key}
               className="link"
@@ -35,7 +37,7 @@ const SimilarStrains = (props) => {
                   <Divider className="colored-divider" />
                   <div className="other-strain-typography">
                     <Typography
-                      variant="subtitle1"
+                      variant="body2"
                       className="header-mini primary"
                     >
                       {item.name}
@@ -47,10 +49,11 @@ const SimilarStrains = (props) => {
                 </div>
               </div>
             </button>
+            </Link>
           ))}
         </div>
       )}
-    </div>
+    </Container>
   );
 };
 

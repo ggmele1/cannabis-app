@@ -36,9 +36,20 @@
   line-height: 18px !important;
   color: grey;
   font-weight: 900 !important;
-  letter-spacing: -0.05rem;
+  letter-spacing: 0rem;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
+.body-small {
+  margin-top: 35px !important;
+}
+
+.header-small {
+  font-weight: 900 !important;
+  letter-spacing: -0.1rem;
+  line-height: 2.8rem !important;
+}
 .body {
   margin-top: 0.3rem !important;
 }
@@ -50,8 +61,22 @@
 /* TYPOGRAPHY END */
 
 /* BUTTONS START */
-.btn-fill {
+.button-margin {
   margin: 1rem;
+}
+
+.button-link {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.btn-fill {
+  margin: 1rem 0 1rem 0;
   border: 3px solid;
   font-family: "Lato";
   font-weight: 900;
@@ -65,11 +90,26 @@
   position: relative;
   background: #ebebeb;
   white-space: nowrap;
+  text-decoration: none;
 }
-
+.green {
+  background-color: #31ab65; 
+}
 .long {
   width: 165px !important;
 }
+
+.full {
+  width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .full {
+    width: 100% !important;
+  }
+}
+
+
 .btn-bottom {
   box-shadow: -5px 5px #0e0e0e;
   border-radius: 3px;
@@ -88,10 +128,12 @@ button:focus {
   font-family: "Lato", sans-serif !important;
   font-weight: 900 !important;
   color: #31ab65 !important;
+  font-size: 15px !important;
   background: transparent;
   box-shadow: 0px 0px 0px transparent;
   border: 0px solid transparent;
   text-shadow: 0px 0px 0px transparent;
+  padding: 2px;
 }
 
 .link:hover {
@@ -145,6 +187,19 @@ button:focus {
   margin-top: 0px;
 }
 
+.input {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 600px) {
+  .input {
+    
+  }
+
+}
+
 .suggestion-links {
   text-decoration: underline !important;
   display: flex;
@@ -155,9 +210,36 @@ button:focus {
 /* SEARCH END */
 
 /* STRAIN COMPONENT START */
+
+.loading {
+  height: 70vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+align-content: center;
+justify-content: center;
+}
+
+.loading-icon {
+  color: #31ab65 !important;
+align-self: center;
+}
+
 .strain-header-wrapper {
   margin-bottom: 10px;
 }
+
+.center-row {
+  text-decoration: none;
+  text-align: center;
+  padding: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 
 .other-strains-wrapper {
   margin-top: 15px;
@@ -178,6 +260,7 @@ button:focus {
   border-color: #31ab65;
   border-radius: 5px;
   padding: 5px;
+  /* overflow: hidden; */
 }
 
 .other-strain-image {
@@ -211,3 +294,26 @@ button:focus {
   justify-content: center;
 }
 /* STRAIN COMPONENT END */
+
+/* ALL STRAINS START */
+
+/* ALL STRAINS END */
+
+/* ANIMATION TESTING */
+.animate-intro {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+
+.icon {
+  width: 75px;
+  height: auto;
+}
+
