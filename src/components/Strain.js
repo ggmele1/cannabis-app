@@ -5,6 +5,7 @@ import StrainDetails from "./StrainDetails";
 import imageSources from "./imageSources";
 import { Container, Typography, CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop"
 
 const Strain = (props) => {
   const [loading, setIsLoading] = useState(true);
@@ -47,6 +48,8 @@ const Strain = (props) => {
   };
 
   return (
+    <div>
+      <ScrollToTop />
     <Container size="md">
       {loading ? (
         <div className="loading">
@@ -145,6 +148,7 @@ const Strain = (props) => {
         </div>
       )}
     </Container>
+    </div>
   );
 };
 export default Strain;

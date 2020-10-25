@@ -9,6 +9,7 @@ const SimilarStrains = (props) => {
   
   const handleLink = (item) => {
     getStrainByName(item);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
   return (
