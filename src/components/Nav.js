@@ -4,11 +4,10 @@ import "../App.css";
 import {Link} from "react-router-dom";
 
 const Nav = (props) => {
-  const { setIsSuccess, setStrainName, setBrowseAll, setNoStrainError } = props;
+  const { setIsSuccess, setStrainName, setNoStrainError } = props;
   const returnToSearch = () => {
     setIsSuccess(false);
     setStrainName("");
-    setBrowseAll(false);
     setNoStrainError(false);
   };
 
