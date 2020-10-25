@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/cannabis-app/static/css/main.48efdae3.chunk.css",
-    "main.js": "/cannabis-app/static/js/main.f579ec8b.chunk.js",
-    "main.js.map": "/cannabis-app/static/js/main.f579ec8b.chunk.js.map",
+    "main.css": "/cannabis-app/static/css/main.e92a4ad4.chunk.css",
+    "main.js": "/cannabis-app/static/js/main.768c6e27.chunk.js",
+    "main.js.map": "/cannabis-app/static/js/main.768c6e27.chunk.js.map",
     "runtime-main.js": "/cannabis-app/static/js/runtime-main.85d3dfeb.js",
     "runtime-main.js.map": "/cannabis-app/static/js/runtime-main.85d3dfeb.js.map",
-    "static/js/2.985453ca.chunk.js": "/cannabis-app/static/js/2.985453ca.chunk.js",
-    "static/js/2.985453ca.chunk.js.map": "/cannabis-app/static/js/2.985453ca.chunk.js.map",
+    "static/js/2.8f2df425.chunk.js": "/cannabis-app/static/js/2.8f2df425.chunk.js",
+    "static/js/2.8f2df425.chunk.js.map": "/cannabis-app/static/js/2.8f2df425.chunk.js.map",
     "index.html": "/cannabis-app/index.html",
-    "precache-manifest.fc69c1721fdcfc3afb6ddc89916b65b2.js": "/cannabis-app/precache-manifest.fc69c1721fdcfc3afb6ddc89916b65b2.js",
+    "precache-manifest.df17e3edd67d5482e28903e1cfde81b5.js": "/cannabis-app/precache-manifest.df17e3edd67d5482e28903e1cfde81b5.js",
     "service-worker.js": "/cannabis-app/service-worker.js",
-    "static/css/main.48efdae3.chunk.css.map": "/cannabis-app/static/css/main.48efdae3.chunk.css.map",
-    "static/js/2.985453ca.chunk.js.LICENSE.txt": "/cannabis-app/static/js/2.985453ca.chunk.js.LICENSE.txt",
+    "static/css/main.e92a4ad4.chunk.css.map": "/cannabis-app/static/css/main.e92a4ad4.chunk.css.map",
+    "static/js/2.8f2df425.chunk.js.LICENSE.txt": "/cannabis-app/static/js/2.8f2df425.chunk.js.LICENSE.txt",
     "static/media/DopestData.png": "/cannabis-app/static/media/DopestData.d7636b3e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.85d3dfeb.js",
-    "static/js/2.985453ca.chunk.js",
-    "static/css/main.48efdae3.chunk.css",
-    "static/js/main.f579ec8b.chunk.js"
+    "static/js/2.8f2df425.chunk.js",
+    "static/css/main.e92a4ad4.chunk.css",
+    "static/js/main.768c6e27.chunk.js"
   ]
 }
