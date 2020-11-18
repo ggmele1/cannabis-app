@@ -1,3 +1,7 @@
+## DopestData
+
+[Dopest Data](https://ggmele1.github.io/cannabis-app/) is a cannabis information app. Search through a database for cannabis strains and get some DopeData.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
