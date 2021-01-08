@@ -88,7 +88,9 @@ const App = () => {
             setIsSuccess(true);
           }
         });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getStrainDetails = async (strain) => {
@@ -106,7 +108,7 @@ const App = () => {
     }
   };
 
-  // Very Ugly, research better way to map non array data for react components.
+  // Very ugly, please refractor.
   const getEffectsData = (medical, positive, negative) => {
     const medicalEffects = [];
     const positiveEffects = [];
@@ -119,7 +121,7 @@ const App = () => {
     setNegative(negativeEffects);
   };
 
-  // set correct name format to retrieve image link.
+  // sets correct name format to retrieve image link.
   const getStrainImageName = (data) => {
     let name = data.replace(/\s/g, "-").toLowerCase();
     setStrainImageName(name);
@@ -161,6 +163,7 @@ const App = () => {
           </Route>
 
           <Route path="/strain">
+            // there has to be a better way
             <Strain
               name={strainName}
               strainRace={strainRace}

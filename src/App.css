@@ -74,7 +74,6 @@
   padding: 0px;
 }
 
-
 .btn-fill {
   margin: 1rem 0 1rem 0;
   border: 3px solid;
@@ -93,7 +92,7 @@
   text-decoration: none;
 }
 .green {
-  background-color: #31ab65; 
+  background-color: #31ab65;
 }
 .long {
   width: 165px !important;
@@ -108,7 +107,6 @@
     width: 100% !important;
   }
 }
-
 
 .btn-bottom {
   box-shadow: -5px 5px #0e0e0e;
@@ -193,13 +191,6 @@ button:focus {
   flex-direction: column;
 }
 
-@media only screen and (min-width: 600px) {
-  .input {
-    
-  }
-
-}
-
 .suggestion-links {
   text-decoration: underline !important;
   display: flex;
@@ -213,16 +204,16 @@ button:focus {
 
 .loading {
   height: 70vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-align-content: center;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .loading-icon {
   color: #31ab65 !important;
-align-self: center;
+  align-self: center;
 }
 
 .strain-header-wrapper {
@@ -239,7 +230,6 @@ align-self: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
 
 .other-strains-wrapper {
   margin-top: 15px;
@@ -260,7 +250,6 @@ align-self: center;
   border-color: #31ab65;
   border-radius: 5px;
   padding: 5px;
-  /* overflow: hidden; */
 }
 
 .other-strain-image {
@@ -295,10 +284,6 @@ align-self: center;
 }
 /* STRAIN COMPONENT END */
 
-/* ALL STRAINS START */
-
-/* ALL STRAINS END */
-
 /* ANIMATION TESTING */
 .animate-intro {
   text-align: center;
@@ -316,4 +301,3 @@ align-self: center;
   width: 75px;
   height: auto;
 }
-
